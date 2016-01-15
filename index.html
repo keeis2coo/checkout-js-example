@@ -1,0 +1,438 @@
+<!DOCTYPE html5>
+	<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$("#viewChew").hide()
+				$("#viewBall").hide()
+				$("#viewTower").hide()
+				$("#viewMice").hide()
+				$("#chew").mouseover(function(){
+					$("#viewChew").show();
+				});	
+				$("#chew").mouseout(function(){
+					$("#viewChew").hide();
+				});
+				$("#ball").mouseover(function(){
+					$("#viewBall").show();
+				});	
+				$("#ball").mouseout(function(){
+					$("#viewBall").hide();
+				});
+				$("#tower").mouseover(function(){
+					$("#viewTower").show();
+				});	
+				$("#tower").mouseout(function(){
+					$("#viewTower").hide();
+				});
+				$("#mice").mouseover(function(){
+					$("#viewMice").show();
+				});	
+				$("#mice").mouseout(function(){
+					$("#viewMice").hide();
+				});
+			
+			});
+		</script>
+	
+		<title>Kee's Pet Supplies</title>
+		<link rel="stylesheet" href="css/styles.css" type="text/css">
+		<link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+		
+		<script type="text/javascript">
+				var gumBallOpt, blindMiceOpt, towerOpt, blueClueOpt;
+				var gumBallVal, blindMiceVal, towerVal, blueClueVal;
+				
+				var gumBallPrice = 2.29;
+				var blindMicePrice = 4.99;
+				var towerPrice = 24.99;
+				var blueCluePrice = 5.99;
+				var gumBallSubTot, blindMiceSubTot, towerSubTot, blueClueSubTot;
+				
+				var productsTot, tableHeaderRow, gumBallRow, blindMiceRow, towerRow, blueClueRow, productsTotalRow, tableFooterRow, cartSentence;
+				
+				var tax = productsTot.toFixed(2) * .08;
+				var totTax = tax + productsTot.toFixed(2);
+				var shipCost = 3.39;
+				
+				function tallyItems() {
+				
+						localStorage.setItem("gumBallSelected", gumBallSel.value);
+						localStorage.setItem("blindMiceSelected", blindMiceSel.value);
+						localStorage.setItem("towerSelected", towerSel.value);
+						localStorage.setItem("blueClueSelected", blueClueSel.value);
+						
+						gumBallOpt = document.getElementById('gumBallSel').selectedIndex;
+						gumBallVal = document.getElementsByTagName('option')[gumBallOpt].value;
+						gumBallSubTot = Math.round(gumBallVal*gumBallPrice*100)/100;
+						
+						blindMiceOpt = document.getElementById('blindMiceSel').selectedIndex;
+						blindMiceVal = document.getElementsByTagName('option')[blindMiceOpt].value;
+						blindMiceSubTot = Math.round(blindMiceVal*blindMicePrice*100)/100;
+						
+						towerOpt = document.getElementById('towerSel').selectedIndex;
+						towerVal = document.getElementsByTagName('option')[towerOpt].value;
+						towerSubTot = Math.round(towerVal*towerPrice*100)/100;
+						
+						blueClueOpt = document.getElementById('blueClueSel').selectedIndex;
+						blueClueVal = document.getElementsByTagName('option')[blueClueOpt].value;
+						blueClueSubTot = Math.round(blueClueVal*blueCluePrice*100)/100;
+						
+						productsTot = parseFloat(gumBallSubTot) + parseFloat(blindMiceSubTot) + parseFloat(towerSubTot) + parseFloat(blueClueSubTot);
+						
+						tableHeaderRow = "<table><tr><th>Item</th><th>Quantity</th><th>Quantity Total</th></tr>";
+						
+						gumBallRow = "<tr><td style='text-align:left'>Bubble Gum Ball</td><td>" + gumBallVal + "</td><td> $" + gumBallSubTot.toFixed(2) + "</td></tr>";
+						
+						blindMiceRow = "<tr><td style='text-align:left'>4 Blind Mice Buddies</td><td>" + blindMiceVal + "</td><td> $" + blindMiceSubTot.toFixed(2) + "</td></tr>";
+						
+						towerRow= "<tr><td style='text-align:left'>Tower of Terror</td><td>" + towerVal + "</td><td> $" + towerSubTot.toFixed(2) + "</td></tr>"; 
+						
+						blueClueRow= "<tr><td style='text-align:left'>Blue Clue Chew Toy</td><td>" + blueClueVal + "</td><td> $" + blueClueSubTot.toFixed(2) + "</td></tr>";
+						
+						productsTotalRow = "<tr><td></td><td></td><th>Total:</th></tr>";
+						tableFooterRow = "<tr><td  style='text-align:left'></td><td></td><td> $" + productsTot.toFixed(2) + "</td></tr></table>";
+						
+						cartSentence = tableHeaderRow + gumBallRow + blueClueRow + towerRow + blindMiceRow + productsTotalRow + tableFooterRow;
+						
+						document.getElementById('shoppingCart').innerHTML = cartSentence;
+						
+						var tax = productsTot.toFixed(2) * .08;
+						var totTax = parseInt(tax.toFixed(2)) + parseInt(productsTot.toFixed(2)) ;
+						var shipCost = 3.39;
+						
+						subTotalRow = "<table><tr><td style='text-align:right'>Subtotal</td><td> $" + productsTot.toFixed(2) + "</td></tr>";
+						
+						taxRow = "<tr><td style='text-align:right'>Tax (.08%) </td><td> $" + tax.toFixed(2) + "</td></tr>";
+						
+						shippingRow = "<tr><td style='text-align:right'>Shipping Cost</td><td> $3.39 </td></tr>";
+						
+						grandTotRow = "<tr><td style='text-align:right'>Grand Total</td><td> $" + (totTax + shipCost)  +"</td></tr></table>";
+						
+						details = subTotalRow + taxRow + shippingRow + grandTotRow;
+						
+						document.getElementById('details').innerHTML = details;
+						
+					}
+					
+					function popSels(){
+						ballVal = localStorage.getItem('gumBallSelected');
+						document.getElementById('gumBallSel').selectedIndex = ballVal;
+						
+						miceVal = localStorage.getItem('blindMiceSelected');
+						document.getElementById('blindMiceSel').selectedIndex = miceVal;
+						
+						towVal = localStorage.getItem('towerSelected');
+						document.getElementById('towerSel').selectedIndex = towVal;
+						
+						clueVal = localStorage.getItem('blueClueSelected');
+						document.getElementById('blueClueSel').selectedIndex = clueVal;
+						tallyItems();
+						
+						}
+						
+				function valid(form)
+					{					
+						var regex = /^[a-zA-Z]+$/;						
+						if ( document.information.name.value == "")
+								{
+									window.alert("Please enter First Name.  No Numbers are allowed");
+									document.information.name.focus();
+									document.information.name.select();
+									return false;
+								}
+								
+						else if(regex.test(document.information.name.value) == false)
+								
+								{
+									window.alert("Your name is invalad! No Numbers are allowed!");
+									document.information.name.focus();
+									document.information.name.select();
+									return false;
+								}
+								
+						if (document.information.lastName.value == "")
+								{
+									window.alert("Please enter Last Name.  No Numbers are allowed");
+									document.information.lastName.focus();
+									document.information.lastName.select();
+									return false;
+								}
+								
+						if( regex.test(document.information.lastName.value) == false)
+								
+								{
+									window.alert("Your last name is invalad! No Numbers are allowed!");
+									document.information.lastName.focus();
+									document.information.lastName.select();
+									return false;
+								}
+								
+								var zip =/^\d{5}$/;
+								
+								
+						if (document.information.zipcode.value == "")
+								{
+									window.alert("Please enter Zipcode");
+									document.information.zipcode.focus();
+									document.information.zipcode.select();
+									return false;
+								}
+								
+						if ( zip.test(document.information.zipcode.value) == false)
+								{
+									window.alert("Your Zipcode is invalad");
+									document.information.zipcode.focus();
+									document.information.zipcode.select();
+									return false;
+								}
+								
+								var phone =/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+								
+								
+						if (document.information.phone.value == "")
+								{
+									window.alert("Please enter your phone number");
+									document.information.phone.focus();
+									document.information.phone.select();
+									return false;
+								}
+								
+						if ( phone.test(document.information.phone.value) == false)
+								{
+									window.alert("Your phone number is invalad");
+									document.information.phone.focus();
+									document.information.phone.select();
+									return false;
+								}
+								return true;
+					}
+		
+		</script>
+	</head>
+	<body onload="popSels();">
+			<div id="header">
+				<div id="logo"><img src="images/kitten.png"></div><h1> Kee's Pet Supplies </h1>
+			</div>
+		<div id="content">
+					
+			<div id="mainContent">
+				<fieldset> <legend> Supply Dashboard </legend>
+					<div class="dashboard" >
+						<p>Bubble Gum Ball<p> <img src="images/woofleball.jpg" alt="Woofleball" id="ball"> <br><label>Quantity</label>
+							<select id="gumBallSel" name="gumBallSel" onChange="tallyItems();">
+								<option value=0>Specify</option>
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+								<option value=6>6</option>
+								<option value=7>7</option>
+								<option value=8>8</option>
+								<option value=9>9</option>
+								<option value=10>10</option>
+								<option value=11>11</option>
+								<option value=12>12</option>
+								<option value=13>13</option>
+								<option value=14>14</option>
+							</select><p>$2.29</p>	
+					</div>
+						<div class="dashboard">
+						<p>Blue's Clue Toy </p> <img src="images/bluechew.jpg" alt="Blue Chew Toy" id="chew"><br> <label>Quantity</label>
+							<select name="blueClueSel" id="blueClueSel" onChange="tallyItems();">
+								<option value=0>Specify</option>
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+								<option value=6>6</option>
+								<option value=7>7</option>
+								<option value=8>8</option>
+								<option value=9>9</option>
+								<option value=10>10</option>
+								<option value=11>11</option>
+								<option value=12>12</option>
+								<option value=13>13</option>
+								<option value=14>14</option>
+							</select><p> $5.99	</p>
+					</div>
+						<div class="dashboard">
+						<p>Tower of Terror</p> <img src="images/cattower.jpg" alt="Cat Tower" id="tower" ><br> <label>Quantity</label>
+							<select name="towerSel" id="towerSel" onChange="tallyItems();">
+								<option value=0>Specify</option>
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+							
+							</select><p>$24.99</p>	
+					</div>
+						<div class="dashboard">
+						<p>4 Blind Mice Buddies<p> <img src="images/catbuddies.jpg" alt="Cat Buddies" id="mice"><br> <label>Quantity</label>
+							<select name="blindMiceSel" id="blindMiceSel" onChange="tallyItems();">
+								<option value=0>Specify</option>
+								<option value=1>1</option>
+								<option value=2>2</option>
+								<option value=3>3</option>
+								<option value=4>4</option>
+								<option value=5>5</option>
+								<option value=6>6</option>
+								<option value=7>7</option>
+								<option value=8>8</option>
+								<option value=9>9</option>
+								<option value=10>10</option>
+							</select><p> $4.99	</p>
+					</div>
+					<div id="viewBall">
+						<img src="images/woofleball.jpg" class="bigImg" >
+					</div>
+					<div id="viewChew">
+						<img src="images/bluechew.jpg" class="bigImg" >
+					</div>
+					<div id="viewTower">
+						<img src="images/cattower.jpg" class="bigImg" >
+					</div>
+					<div id="viewMice">
+						<img src="images/catbuddies.jpg" class="bigImg" >
+					</div>
+				</fieldset>
+				<fieldset> <legend> Shopping Cart </legend>
+					<div id="shoppingCart">
+					
+					</div>
+				
+				</fieldset>
+				<fieldset> <legend> Shipping Address </legend>
+					<div id="shipping">
+					<form name="information">
+						<label>First Name: </label><input type="text" name="name" required><br>
+						<label>Last Name: </label><input type="text" name="lastName" required><br>
+						<label>Street :</label><input type="text" name="street" required><br>
+						<label>City: </label><input type="text" name="city" required><br>
+						<label>State: </label>
+							<select name="state" required>
+								<option value="Select">Select </option>
+								<option value="AL">AL</option>
+								<option value="AK">AK</option>
+								<option value="AZ">AZ</option>
+								<option value="AR">AR</option>
+								<option value="CA">CA</option>
+								<option value="CO">CO</option>
+								<option value="CT">CT</option>
+								<option value="DE">DE</option>
+								<option value="DC">DC</option>
+								<option value="FL">FL</option>
+								<option value="GA">GA</option>
+								<option value="HI">HI</option>
+								<option value="ID">ID</option>
+								<option value="IL">IL</option>
+								<option value="IN">IN</option>
+								<option value="IA">IA</option>
+								<option value="KS">KS</option>
+								<option value="KY">KY</option>
+								<option value="LA">LA</option>
+								<option value="ME">ME</option>
+								<option value="MD">MD</option>
+								<option value="MA">MA</option>
+								<option value="MI">MI</option>
+								<option value="MN">MN</option>
+								<option value="MS">MS</option>
+								<option value="MO">MO</option>
+								<option value="MT">MT</option>
+								<option value="NE">NE</option>
+								<option value="NV">NV</option>
+								<option value="NH">NH</option>
+								<option value="NJ">NJ</option>
+								<option value="NM">NM</option>
+								<option value="NY">NY</option>
+								<option value="NC">NC</option>
+								<option value="ND">ND</option>
+								<option value="OH">OH</option>
+								<option value="OK">OK</option>
+								<option value="OR">OR</option>
+								<option value="PA">PA</option>
+								<option value="RI">RI</option>
+								<option value="SC">SC</option>
+								<option value="SD">SD</option>
+								<option value="TN">TN</option>
+								<option value="TX">TX</option>
+								<option value="UT">UT</option>
+								<option value="VT">VT</option>
+								<option value="VA">VA</option>
+								<option value="WA">WA</option>
+								<option value="WV">WV</option>
+								<option value="WI">WI</option>
+								<option value="WY">WY</option>
+							</select>	<br>
+						<label>Zip Code: </label><input type="text" name="zipcode"><br>
+						
+						<label>Phone: </label><input type="text" name="phone" required><br>
+					</form>
+				
+				</fieldset>
+				</div>
+				<fieldset> <legend> Details </legend>
+					<div id="details">
+					</div>
+				</fieldset>
+				<fieldset> <legend> Credit Card Information </legend>
+					<div id="cardInfo">
+					<form>
+						<label>Card Type: </label> 
+							<select name="cardType">
+								<option value="select">Select One</option>
+								<option value="visa">Visa</option>
+								<option value="master">Master Card</option>
+								<option value="discover">Discover</option>
+								<option value="ae">American Express</option>
+								
+							</select><br>
+						<label>Name: </label><input type="text" name="name"><br>
+						<label>Credit Card Number: </label><input type="text" name="card"><br>
+						<label>Expiration Date: </label>
+							<select>
+								<option value="01"> 01 </option>
+								<option value="2"> 02 </option>
+								<option value="3"> 03 </option>
+								<option value="4"> 04 </option>
+								<option value="5"> 05 </option>
+								<option value="6"> 06 </option>
+								<option value="7"> 07 </option>
+								<option value="8"> 08 </option>
+								<option value="9"> 09 </option>
+								<option value="10"> 10 </option>
+								<option value="11"> 11 </option>
+								<option value="12"> 12 </option>
+							</select> /
+							<select>
+								<option value="2015"> 2015 </option>
+								<option value="2016"> 2016 </option>
+								<option value="2017"> 2017 </option>
+								<option value="2018"> 2018 </option>
+								<option value="3019"> 2019 </option>
+								<option value="2020"> 2020 </option>
+							</select>
+					</div>
+					</form>
+				</fieldset>
+				<fieldset> <legend> Submit </legend>
+					<div id="buttons">
+					<input type="button" name="shoppingCart" value="View Shopping Cart" class="hvr-back-pulse">
+					<input type="button" name="cancel" value="Cancel Order" class="hvr-back-pulse">
+					<input type="button" name="purchase" value="Purchase" class="hvr-back-pulse" onClick="valid(form);">
+					</div>
+				
+				</fieldset>
+			</div>
+		</div>
+			
+	</body>
+</html>
+
+		
+									
