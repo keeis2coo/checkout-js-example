@@ -1,0 +1,240 @@
+@import url('reset.css');
+@import url(http://fonts.googleapis.com/css?family=Handlee);
+@import url(http://fonts.googleapis.com/css?family=Comfortaa);
+@charset "UTF-8";
+
+body{
+	background: url(../images/diamond-upholstery.png);
+	font-family: 'Comfortaa', cursive;
+	font-size:1em;
+	
+}
+
+#content{
+	width: 70%;
+	margin:15px auto;
+	background-color: rgba(255,255,255, .5);
+	border: 1px solid rgba(235,235,235, .6);
+	padding:20px;
+	-webkit-box-shadow: -10px 10px 6px -6px #777;
+	   -moz-box-shadow: -10px 10px 6px -6px #777;
+	        box-shadow:-10px 10px 6px -6px #777;
+}
+
+#header{
+	margin:auto;
+	text-align:center;
+	padding: 20px;
+	font-family: 'Pacifico', cursive;
+	line-height: 1.5em;
+	font-size: 3em;
+	color: rgb(51,37,50);
+	width:100%;
+
+}
+
+#logo{
+	background-color:rgb(247,122,82);
+	border: rgb(51,37,50) 7px double;
+	margin:auto;
+	width:200px;
+	height:200px;
+	border-radius:150px;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	-webkit-box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+	box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+
+}
+
+#header img{
+	width: 200px;
+	height: 220px;
+	margin:auto;
+
+	
+}
+#logo h1{
+	margin:auto;
+	text-align:center;
+	margin:30px 0px 55px -10px ;
+	-ms-transform: rotate(-17deg); /* IE 9 */
+    -webkit-transform: rotate(-17deg); /* Chrome, Safari, Opera */
+    transform: rotate(-17deg);
+}
+
+fieldset{
+	border-top: rgba(51,37,50, .7) 2px dotted;
+	padding:20px;
+	border-radius: 2px;
+	margin: 20px;
+	
+}
+
+legend{
+	padding:10px;
+	color: rgb(255,151,79);
+	font-size:1.2em;
+}
+	
+label{
+	font-size:1em;
+}
+
+select{
+	margin:5px 5px 15px 1.5em;
+	height: 1.7em;
+}
+
+.dashboard select{
+	margin:5px 5px 15px 5px;
+}
+.dashboard{
+	padding: 10px;
+	margin: 5px 5px 15px 15px;
+	float:left;
+	width: 20%;
+	border: rgba(235,235,235, 1) 1px solid;
+	text-align: center;
+	background-color: white;
+	
+	
+}
+.dashboard p{
+	vertical-align: middle;
+	
+}
+
+.dashboard img{
+	margin:10px;
+	width: 50px;
+	height: 50px;
+}
+
+#shoppingCart table, th, td {
+   border: 1px solid black;
+   padding: 10px;
+}
+	
+#total{
+	margin:10px;
+	padding:10px;
+}
+
+#shipping label{
+	text-align: right;
+	width: 100px;
+	float: left;
+	margin-right: 0.5em;
+	display: block
+	
+	}
+#shipping input{
+	margin: 0 0 .5em 1.5em;
+	height: 2em;
+	width: 250px;
+		}
+
+#details .col1{
+	text-align:right;
+	width: 20px;
+}
+
+#details span{
+	text-align:center;
+}
+
+#cardType select{
+	width:150px;
+	}
+	
+#cardInfo label{
+	text-align: right;
+	width: 6em;
+	float: left;
+	margin: 0 0.5em 0 0;
+	display: block
+}
+
+#cardInfo input{
+	margin: 0 0 1em 1.5em;
+	height: 2em;
+	width: 250px;
+	}
+	
+#buttons{
+	margin:auto;
+}
+
+input[type=button]{
+	border-radius:0;
+	color:white;
+	border:none;
+	background-color: rgba(51,37,50, .7);
+	font-family: 'Raleway', sans-serif;
+	width: 175px;
+	height: 50px;
+	margin: 0 0 10px 10px;
+	
+}
+
+.bigImg{
+	margin:auto;
+	width:180px;
+	height:180px;
+	border: grey 1px solid;
+	-webkit-box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+	box-shadow: -1px 0px 20px 0px rgba(0,0,0,0.75);
+}
+
+#viewBall,#viewChew, #viewTower, #viewMice{
+float:left;
+padding:20px;
+}	
+
+@-webkit-keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(247, 122, 82, 0.75);
+  }
+}
+
+@keyframes hvr-back-pulse {
+  50% {
+    background-color: rgba(247, 122, 82, 0.75);
+  }
+}
+
+.hvr-back-pulse {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.hvr-back-pulse:hover, .hvr-back-pulse:focus, .hvr-back-pulse:active {
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: rgb(255,151,79);
+  background-color: rgb(255,151,79);
+  color: white;
+}
